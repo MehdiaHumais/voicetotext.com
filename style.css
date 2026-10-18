@@ -56,6 +56,36 @@ h1{
 	color: #888;
 }
 
+.lang-row{
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-bottom: 12px;
+}
+
+.lang-row label{
+	font-size: 13px;
+	color: #888;
+}
+
+.lang-row select{
+	padding: 8px 12px;
+	font-family: inherit;
+	font-size: 14px;
+	color: #111;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	cursor: pointer;
+	outline: none;
+	transition: border-color .15s;
+}
+
+.lang-row select:focus{
+	border-color: #111;
+}
+
 #convert_text{
 	width: 100%;
 	height: 240px;

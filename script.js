@@ -8,6 +8,7 @@
 	var statusEl = document.getElementById('status');
 	var statusText = document.getElementById('status_text');
 	var recordLabel = document.getElementById('record_label');
+	var langSelect = document.getElementById('lang_select');
 	var wordCount = document.getElementById('word_count');
 	var charCount = document.getElementById('char_count');
 
@@ -41,7 +42,26 @@
 
 	recognition.continuous = true;
 	recognition.interimResults = true;
-	recognition.lang = navigator.language || 'en-US';
+	recognition.lang = langSelect.value || 'en-US';
+
+	function applyLanguage() {
+		var isUrdu = langSelect.value.indexOf('ur') === 0;
+		recognition.lang = langSelect.value;
+		convertText.dir = isUrdu ? 'rtl' : 'ltr';
+		convertText.placeholder = isUrdu
+			? 'آپ کی گفتگو یہاں ظاہر ہوگی...'
+			: 'Your transcription will appear here...';
+	}
+
+	applyLanguage();
+
+	langSelect.addEventListener('change', function () {
+		applyLanguage();
+		if (listening) {
+			restartNeeded = true;
+			recognition.stop();
+		}
+	});
 
 	function setListeningState(isListening) {
 		listening = isListening;
@@ -75,7 +95,8 @@
 			'service-not-allowed': 'Speech recognition blocked. Check browser permissions.',
 			'no-speech': 'No speech detected. Keep talking...',
 			'audio-capture': 'No microphone found.',
-			'network': 'Network error with the speech service.'
+			'network': 'Network error with the speech service.',
+			'language-not-supported': 'This language is not supported by your browser. Try another one.'
 		};
 
 		if (event.error === 'no-speech') {
