@@ -1,20 +1,53 @@
-<!Doctype html>
-<html lang = "en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="UFI=8">
-	<meta http-equiv="X-UA-Compatible" content="IE-edge">
-	<meta name="viewport" content="widthdevice, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css">
 	<title>Voice to text converter</title>
 </head>
 <body>
-	<div class="voice_to_text">
-		<h1>Voice To Text Converter</h1>
-		<textarea id="convert_text"></textarea>
-		<button id="click_to_convert">Voice To Text</button>
-	</div>
-	
-	
+	<main class="card">
+		<header>
+			<div class="logo">
+				<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+					<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+					<line x1="12" y1="19" x2="12" y2="22"></line>
+				</svg>
+			</div>
+			<div>
+				<h1>Voice to Text</h1>
+				<p class="subtitle">Press start, allow the mic, and just talk.</p>
+			</div>
+		</header>
+
+		<textarea id="convert_text" placeholder="Your transcription will appear here..."></textarea>
+
+		<div class="meta">
+			<span id="word_count">0 words</span>
+			<span id="char_count">0 characters</span>
+		</div>
+
+		<div class="controls">
+			<button id="click_to_convert" class="btn btn-primary">
+				<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+					<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+					<line x1="12" y1="19" x2="12" y2="22"></line>
+				</svg>
+				<span id="record_label">Start Listening</span>
+			</button>
+			<button id="copy_text" class="btn" type="button">Copy</button>
+			<button id="clear_text" class="btn" type="button">Clear</button>
+		</div>
+
+		<p id="status" class="status" role="status">
+			<span class="dot"></span>
+			<span id="status_text">Ready when you are.</span>
+		</p>
+	</main>
+
 	<script src="script.js"></script>
 </body>
 </html>
